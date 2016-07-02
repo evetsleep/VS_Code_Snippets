@@ -1,1 +1,133 @@
-here
+{
+/*
+	 // Place your snippets for PowerShell here. Each snippet is defined under a snippet name and has a prefix, body and 
+	 // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	 // $1, $2 for tab stops, ${id} and ${id:label} and ${1:label} for variables. Variables with the same id are connected.
+	 // Example:
+	 "Print to console": {
+		"prefix": "log",
+		"body": [
+			"console.log('$1');",
+			"$2"
+		],
+		"description": "Log output to console"
+	}
+*/
+
+    "try-catch-base": {
+        "prefix": "try-catch-base",
+        "body": [
+            "try \\{"
+            "   $1"    
+            "}"
+            "catch \\{"
+            "   $2"    
+            "\\}"
+            "$3"
+        ],
+        "description": "Basic try-catch."
+    }
+    
+    "for": {
+        "prefix": "for",
+        "body": [
+            "for (${index}=0;${index} -lt ${collection}.count;${index}++) {"
+            "\t$entry = ${collection}[${index}]"
+    
+            "}"
+        ],
+        "description": "basic for loop"
+    }
+    
+    "arrayList": {
+        "prefix": "arrayList",
+        "body": [
+            "$${arrayName} = New-Object System.Collections.ArrayList"
+            "$1"
+        ],
+        "description": "New ArrayList object."
+    }
+    
+    "hashTable": {
+        "prefix": "hashTable",
+        "body": [
+            "$${hashName} = New-Object System.Collections.HashTable"
+            "$1"
+        ],
+        "description": "New hash table."
+    }
+    
+    "commentHelp": {
+        "prefix": "commentHelp",
+        "body": [
+            "<#"
+            ".SYNOPSIS"
+            "$1"
+            ""
+            ".DESCRIPTION"
+            "$2"
+            ""
+            ".PARAMETER ${param}"
+            "$3"
+            ""
+            ".EXAMPLE"
+            "$4"
+            ""
+            ".NOTES"
+            "$5"
+            "#>"
+        ],
+        "description": "Comment based help template."
+    }
+    
+    "scriptParam": {
+        "prefix": "scriptParam",
+        "body": [
+            "[CmdletBinding()]Param("
+            "\t[Parameter("
+            "\t\tPosition \t\t\t\t\t\t= 0,"
+            "\t\tMandatory \t\t\t\t\t\t= 0,"
+            "\t\tValueFromPipeline \t\t\t\t= $false,"
+            "\t\tValueFromPipelineByPropertyName = $false"
+            "\t)]"
+            "\t$${ParameterName}"
+            ")"
+            "$1"
+        ],
+        "description": "param start"
+    }
+    
+    "verbose": {
+        "prefix": "verbose",
+        "body": [
+            "Write-Verbose -Message ('${Text}')"
+        ],
+        "description": "Verbose ouput"
+    }
+    
+    "warning": {
+        "prefix": "warning",
+        "body": [
+            "Write-Warning -Message ('${Text}')"
+        ],
+        "description": "Warning ouput"
+    }
+    
+    "batch": {
+        "prefix": "batch",
+        "body": [
+            "$numbers = 0..9999"
+            "$batchSize = 250"
+            "for($i=0; $i -lt $numbers.count; $i = $i + $batchsize) {"
+            "\t$start = $i"
+            "\t$end = ($i + $batchsize) -1" 
+            "\t$queue = $numbers[$start..$end]"
+            "\t#Do something"
+            ""
+            "\t$queue"
+            "\tStart-Sleep -Seconds 5"
+            "}"
+        ],
+        "description": "Process things in a batch"
+    }
+}
